@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>bordiga2.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,32 +49,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CargaDeProducto.cs">
+    <Compile Include="frmCargaDeProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CargaDeProducto.Designer.cs">
-      <DependentUpon>CargaDeProducto.cs</DependentUpon>
+    <Compile Include="frmCargaDeProductos.Designer.cs">
+      <DependentUpon>frmCargaDeProductos.cs</DependentUpon>
     </Compile>
-    <Compile Include="CargaDeVentas.cs">
+    <Compile Include="frmCargaDeVentas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CargaDeVentas.Designer.cs">
-      <DependentUpon>CargaDeVentas.cs</DependentUpon>
+    <Compile Include="frmCargaDeVentas.Designer.cs">
+      <DependentUpon>frmCargaDeVentas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Listados.cs">
+    <Compile Include="frmListado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Listados.Designer.cs">
-      <DependentUpon>Listados.cs</DependentUpon>
+    <Compile Include="frmListado.Designer.cs">
+      <DependentUpon>frmListado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Principal.cs">
+    <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Principal.Designer.cs">
-      <DependentUpon>Principal.cs</DependentUpon>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmCargaDeProductos.resx">
+      <DependentUpon>frmCargaDeProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCargaDeVentas.resx">
+      <DependentUpon>frmCargaDeVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListado.resx">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -80,6 +95,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -93,6 +109,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bordiga.ico" />
+    <Content Include="bordiga2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
