@@ -29,31 +29,43 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListado));
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.lstProductos = new System.Windows.Forms.ComboBox();
+            this.lstVentas = new System.Windows.Forms.ComboBox();
             this.lblProductos = new System.Windows.Forms.Label();
             this.lblVentas = new System.Windows.Forms.Label();
             this.cmdFiltrar = new System.Windows.Forms.Button();
             this.lblDetalles = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblDetalles2 = new System.Windows.Forms.Label();
             this.cmdVolver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // lstProductos
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(30, 57);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(157, 21);
-            this.comboBox1.TabIndex = 0;
+            this.lstProductos.FormattingEnabled = true;
+            this.lstProductos.Items.AddRange(new object[] {
+            "Ejemplo 1",
+            "Ejemplo 2",
+            "Ejemplo 3",
+            "Ejemplo 4",
+            "Ejemplo 5"});
+            this.lstProductos.Location = new System.Drawing.Point(30, 57);
+            this.lstProductos.Name = "lstProductos";
+            this.lstProductos.Size = new System.Drawing.Size(157, 21);
+            this.lstProductos.TabIndex = 0;
             // 
-            // comboBox2
+            // lstVentas
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(30, 121);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(157, 21);
-            this.comboBox2.TabIndex = 1;
+            this.lstVentas.FormattingEnabled = true;
+            this.lstVentas.Items.AddRange(new object[] {
+            "Ejemplo 1",
+            "Ejemplo 2",
+            "Ejemplo 3",
+            "Ejemplo 4",
+            "Ejemplo 5"});
+            this.lstVentas.Location = new System.Drawing.Point(30, 121);
+            this.lstVentas.Name = "lstVentas";
+            this.lstVentas.Size = new System.Drawing.Size(157, 21);
+            this.lstVentas.TabIndex = 1;
             // 
             // lblProductos
             // 
@@ -95,14 +107,14 @@
             this.lblDetalles.TabIndex = 1;
             this.lblDetalles.Text = "Detalles:";
             // 
-            // label1
+            // lblDetalles2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(234, 89);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "_________________________";
+            this.lblDetalles2.AutoSize = true;
+            this.lblDetalles2.Location = new System.Drawing.Point(234, 89);
+            this.lblDetalles2.Name = "lblDetalles2";
+            this.lblDetalles2.Size = new System.Drawing.Size(157, 13);
+            this.lblDetalles2.TabIndex = 2;
+            this.lblDetalles2.Text = "_________________________";
             // 
             // cmdVolver
             // 
@@ -120,14 +132,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 216);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblDetalles2);
             this.Controls.Add(this.cmdVolver);
             this.Controls.Add(this.cmdFiltrar);
             this.Controls.Add(this.lblVentas);
             this.Controls.Add(this.lblDetalles);
             this.Controls.Add(this.lblProductos);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.lstVentas);
+            this.Controls.Add(this.lstProductos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListado";
             this.Text = "frmListado";
@@ -139,13 +151,13 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox lstProductos;
+        private System.Windows.Forms.ComboBox lstVentas;
         private System.Windows.Forms.Label lblProductos;
         private System.Windows.Forms.Label lblVentas;
         private System.Windows.Forms.Button cmdFiltrar;
         private System.Windows.Forms.Label lblDetalles;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDetalles2;
         private System.Windows.Forms.Button cmdVolver;
     }
 }

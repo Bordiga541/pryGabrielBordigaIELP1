@@ -41,19 +41,19 @@
             this.lblID = new System.Windows.Forms.Label();
             this.lblCargarProductos = new System.Windows.Forms.Label();
             this.tbConsultarProductos = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cmdActualizar = new System.Windows.Forms.Button();
             this.cmdVolver2 = new System.Windows.Forms.Button();
             this.lblProductosCargados = new System.Windows.Forms.Label();
             this.dtgvProductosCargados = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaDeRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tbProductos.SuspendLayout();
             this.tbRegistroProductos.SuspendLayout();
             this.tbConsultarProductos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvProductosCargados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvProductosCargados)).BeginInit();
             this.SuspendLayout();
             // 
             // tbProductos
@@ -170,7 +170,7 @@
             // tbConsultarProductos
             // 
             this.tbConsultarProductos.Controls.Add(this.pictureBox1);
-            this.tbConsultarProductos.Controls.Add(this.button1);
+            this.tbConsultarProductos.Controls.Add(this.cmdActualizar);
             this.tbConsultarProductos.Controls.Add(this.cmdVolver2);
             this.tbConsultarProductos.Controls.Add(this.lblProductosCargados);
             this.tbConsultarProductos.Controls.Add(this.dtgvProductosCargados);
@@ -181,6 +181,27 @@
             this.tbConsultarProductos.TabIndex = 1;
             this.tbConsultarProductos.Text = "Consultar";
             this.tbConsultarProductos.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::pryGabrielBordigaIELP1.Properties.Resources.Refresh_icon;
+            this.pictureBox1.Location = new System.Drawing.Point(439, 16);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // cmdActualizar
+            // 
+            this.cmdActualizar.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdActualizar.Location = new System.Drawing.Point(459, 16);
+            this.cmdActualizar.Name = "cmdActualizar";
+            this.cmdActualizar.Size = new System.Drawing.Size(67, 20);
+            this.cmdActualizar.TabIndex = 0;
+            this.cmdActualizar.Text = "actualizar";
+            this.cmdActualizar.UseVisualStyleBackColor = true;
+            this.cmdActualizar.Click += new System.EventHandler(this.button1_Click);
             // 
             // cmdVolver2
             // 
@@ -237,27 +258,6 @@
             this.FechaDeRegistro.HeaderText = "Fecha de Registro";
             this.FechaDeRegistro.Name = "FechaDeRegistro";
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(459, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 20);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "actualizar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::pryGabrielBordigaIELP1.Properties.Resources.Refresh_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(439, 16);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
             // frmCargaDeProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,8 +274,8 @@
             this.tbRegistroProductos.PerformLayout();
             this.tbConsultarProductos.ResumeLayout(false);
             this.tbConsultarProductos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvProductosCargados)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvProductosCargados)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -300,7 +300,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaDeRegistro;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cmdActualizar;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

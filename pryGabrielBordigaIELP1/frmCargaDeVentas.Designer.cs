@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCargaDeVentas));
             this.tbProductos = new System.Windows.Forms.TabControl();
             this.tbRegistroProductos = new System.Windows.Forms.TabPage();
+            this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.dtpFechaDeRegistro = new System.Windows.Forms.DateTimePicker();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
@@ -44,9 +45,18 @@
             this.tbConsultarProductos = new System.Windows.Forms.TabPage();
             this.tbVendido2 = new System.Windows.Forms.TabControl();
             this.tbMayorA10 = new System.Windows.Forms.TabPage();
+            this.nudMayorA10 = new System.Windows.Forms.NumericUpDown();
+            this.cmdBuscar = new System.Windows.Forms.Button();
+            this.lstProductosEnAlmacen = new System.Windows.Forms.ComboBox();
+            this.lblProductoEnAlmacen = new System.Windows.Forms.Label();
+            this.lblIngresar = new System.Windows.Forms.Label();
             this.tbVendido = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.nudCantidadVendido = new System.Windows.Forms.NumericUpDown();
+            this.lstVentasRegistradas = new System.Windows.Forms.ComboBox();
+            this.lblCantidadVendido = new System.Windows.Forms.Label();
+            this.lblVentasRegistradas = new System.Windows.Forms.Label();
+            this.picRefresh = new System.Windows.Forms.PictureBox();
+            this.cmdActualizar = new System.Windows.Forms.Button();
             this.cmdVolver2 = new System.Windows.Forms.Button();
             this.lblProductosVendidos = new System.Windows.Forms.Label();
             this.dtgvProductosCargados = new System.Windows.Forms.DataGridView();
@@ -54,27 +64,17 @@
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaDeVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblIngresar = new System.Windows.Forms.Label();
-            this.lblProductoEnAlmacen = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.lblVentasRegistradas = new System.Windows.Forms.Label();
-            this.lblCantidadVendido = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.nudCantidad = new System.Windows.Forms.NumericUpDown();
-            this.nudCantidadVendido = new System.Windows.Forms.NumericUpDown();
-            this.nudMayorA10 = new System.Windows.Forms.NumericUpDown();
             this.tbProductos.SuspendLayout();
             this.tbRegistroProductos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.tbConsultarProductos.SuspendLayout();
             this.tbVendido2.SuspendLayout();
             this.tbMayorA10.SuspendLayout();
-            this.tbVendido.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvProductosCargados)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadVendido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMayorA10)).BeginInit();
+            this.tbVendido.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadVendido)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRefresh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvProductosCargados)).BeginInit();
             this.SuspendLayout();
             // 
             // tbProductos
@@ -108,6 +108,13 @@
             this.tbRegistroProductos.TabIndex = 0;
             this.tbRegistroProductos.Text = "Registro";
             this.tbRegistroProductos.UseVisualStyleBackColor = true;
+            // 
+            // nudCantidad
+            // 
+            this.nudCantidad.Location = new System.Drawing.Point(48, 342);
+            this.nudCantidad.Name = "nudCantidad";
+            this.nudCantidad.Size = new System.Drawing.Size(91, 31);
+            this.nudCantidad.TabIndex = 3;
             // 
             // dtpFechaDeRegistro
             // 
@@ -202,8 +209,8 @@
             // tbConsultarProductos
             // 
             this.tbConsultarProductos.Controls.Add(this.tbVendido2);
-            this.tbConsultarProductos.Controls.Add(this.pictureBox1);
-            this.tbConsultarProductos.Controls.Add(this.button1);
+            this.tbConsultarProductos.Controls.Add(this.picRefresh);
+            this.tbConsultarProductos.Controls.Add(this.cmdActualizar);
             this.tbConsultarProductos.Controls.Add(this.cmdVolver2);
             this.tbConsultarProductos.Controls.Add(this.lblProductosVendidos);
             this.tbConsultarProductos.Controls.Add(this.dtgvProductosCargados);
@@ -228,8 +235,8 @@
             // tbMayorA10
             // 
             this.tbMayorA10.Controls.Add(this.nudMayorA10);
-            this.tbMayorA10.Controls.Add(this.button2);
-            this.tbMayorA10.Controls.Add(this.comboBox1);
+            this.tbMayorA10.Controls.Add(this.cmdBuscar);
+            this.tbMayorA10.Controls.Add(this.lstProductosEnAlmacen);
             this.tbMayorA10.Controls.Add(this.lblProductoEnAlmacen);
             this.tbMayorA10.Controls.Add(this.lblIngresar);
             this.tbMayorA10.Location = new System.Drawing.Point(4, 32);
@@ -240,10 +247,57 @@
             this.tbMayorA10.Text = "Mayor a 10";
             this.tbMayorA10.UseVisualStyleBackColor = true;
             // 
+            // nudMayorA10
+            // 
+            this.nudMayorA10.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudMayorA10.Location = new System.Drawing.Point(10, 31);
+            this.nudMayorA10.Name = "nudMayorA10";
+            this.nudMayorA10.Size = new System.Drawing.Size(85, 25);
+            this.nudMayorA10.TabIndex = 0;
+            // 
+            // cmdBuscar
+            // 
+            this.cmdBuscar.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdBuscar.Location = new System.Drawing.Point(417, 79);
+            this.cmdBuscar.Name = "cmdBuscar";
+            this.cmdBuscar.Size = new System.Drawing.Size(88, 36);
+            this.cmdBuscar.TabIndex = 2;
+            this.cmdBuscar.Text = "Buscar";
+            this.cmdBuscar.UseVisualStyleBackColor = true;
+            // 
+            // lstProductosEnAlmacen
+            // 
+            this.lstProductosEnAlmacen.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstProductosEnAlmacen.FormattingEnabled = true;
+            this.lstProductosEnAlmacen.Location = new System.Drawing.Point(10, 83);
+            this.lstProductosEnAlmacen.Name = "lstProductosEnAlmacen";
+            this.lstProductosEnAlmacen.Size = new System.Drawing.Size(200, 25);
+            this.lstProductosEnAlmacen.TabIndex = 1;
+            // 
+            // lblProductoEnAlmacen
+            // 
+            this.lblProductoEnAlmacen.AutoSize = true;
+            this.lblProductoEnAlmacen.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductoEnAlmacen.Location = new System.Drawing.Point(6, 59);
+            this.lblProductoEnAlmacen.Name = "lblProductoEnAlmacen";
+            this.lblProductoEnAlmacen.Size = new System.Drawing.Size(179, 21);
+            this.lblProductoEnAlmacen.TabIndex = 0;
+            this.lblProductoEnAlmacen.Text = "Productos en almacen";
+            // 
+            // lblIngresar
+            // 
+            this.lblIngresar.AutoSize = true;
+            this.lblIngresar.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIngresar.Location = new System.Drawing.Point(6, 8);
+            this.lblIngresar.Name = "lblIngresar";
+            this.lblIngresar.Size = new System.Drawing.Size(154, 21);
+            this.lblIngresar.TabIndex = 0;
+            this.lblIngresar.Text = "Ingresa la cantidad";
+            // 
             // tbVendido
             // 
             this.tbVendido.Controls.Add(this.nudCantidadVendido);
-            this.tbVendido.Controls.Add(this.comboBox2);
+            this.tbVendido.Controls.Add(this.lstVentasRegistradas);
             this.tbVendido.Controls.Add(this.lblCantidadVendido);
             this.tbVendido.Controls.Add(this.lblVentasRegistradas);
             this.tbVendido.Location = new System.Drawing.Point(4, 32);
@@ -254,26 +308,63 @@
             this.tbVendido.Text = "Vendido";
             this.tbVendido.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // nudCantidadVendido
             // 
-            this.pictureBox1.Image = global::pryGabrielBordigaIELP1.Properties.Resources.Refresh_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(439, 178);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.nudCantidadVendido.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudCantidadVendido.Location = new System.Drawing.Point(11, 84);
+            this.nudCantidadVendido.Name = "nudCantidadVendido";
+            this.nudCantidadVendido.Size = new System.Drawing.Size(85, 25);
+            this.nudCantidadVendido.TabIndex = 2;
             // 
-            // button1
+            // lstVentasRegistradas
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(459, 178);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 20);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "actualizar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.lstVentasRegistradas.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstVentasRegistradas.FormattingEnabled = true;
+            this.lstVentasRegistradas.Location = new System.Drawing.Point(11, 33);
+            this.lstVentasRegistradas.Name = "lstVentasRegistradas";
+            this.lstVentasRegistradas.Size = new System.Drawing.Size(253, 25);
+            this.lstVentasRegistradas.TabIndex = 1;
+            // 
+            // lblCantidadVendido
+            // 
+            this.lblCantidadVendido.AutoSize = true;
+            this.lblCantidadVendido.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadVendido.Location = new System.Drawing.Point(6, 61);
+            this.lblCantidadVendido.Name = "lblCantidadVendido";
+            this.lblCantidadVendido.Size = new System.Drawing.Size(147, 21);
+            this.lblCantidadVendido.TabIndex = 0;
+            this.lblCantidadVendido.Text = "Cantidad Vendido";
+            // 
+            // lblVentasRegistradas
+            // 
+            this.lblVentasRegistradas.AutoSize = true;
+            this.lblVentasRegistradas.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVentasRegistradas.Location = new System.Drawing.Point(7, 10);
+            this.lblVentasRegistradas.Name = "lblVentasRegistradas";
+            this.lblVentasRegistradas.Size = new System.Drawing.Size(157, 21);
+            this.lblVentasRegistradas.TabIndex = 0;
+            this.lblVentasRegistradas.Text = "Ventas Registradas";
+            // 
+            // picRefresh
+            // 
+            this.picRefresh.Image = global::pryGabrielBordigaIELP1.Properties.Resources.Refresh_icon;
+            this.picRefresh.Location = new System.Drawing.Point(439, 178);
+            this.picRefresh.Name = "picRefresh";
+            this.picRefresh.Size = new System.Drawing.Size(20, 20);
+            this.picRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRefresh.TabIndex = 4;
+            this.picRefresh.TabStop = false;
+            // 
+            // cmdActualizar
+            // 
+            this.cmdActualizar.Font = new System.Drawing.Font("Microsoft JhengHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdActualizar.Location = new System.Drawing.Point(459, 178);
+            this.cmdActualizar.Name = "cmdActualizar";
+            this.cmdActualizar.Size = new System.Drawing.Size(67, 20);
+            this.cmdActualizar.TabIndex = 0;
+            this.cmdActualizar.Text = "actualizar";
+            this.cmdActualizar.UseVisualStyleBackColor = true;
+            this.cmdActualizar.Click += new System.EventHandler(this.button1_Click);
             // 
             // cmdVolver2
             // 
@@ -337,97 +428,6 @@
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
             // 
-            // lblIngresar
-            // 
-            this.lblIngresar.AutoSize = true;
-            this.lblIngresar.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIngresar.Location = new System.Drawing.Point(6, 8);
-            this.lblIngresar.Name = "lblIngresar";
-            this.lblIngresar.Size = new System.Drawing.Size(154, 21);
-            this.lblIngresar.TabIndex = 0;
-            this.lblIngresar.Text = "Ingresa la cantidad";
-            // 
-            // lblProductoEnAlmacen
-            // 
-            this.lblProductoEnAlmacen.AutoSize = true;
-            this.lblProductoEnAlmacen.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductoEnAlmacen.Location = new System.Drawing.Point(6, 59);
-            this.lblProductoEnAlmacen.Name = "lblProductoEnAlmacen";
-            this.lblProductoEnAlmacen.Size = new System.Drawing.Size(179, 21);
-            this.lblProductoEnAlmacen.TabIndex = 0;
-            this.lblProductoEnAlmacen.Text = "Productos en almacen";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(10, 83);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 25);
-            this.comboBox1.TabIndex = 1;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(417, 79);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(88, 36);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Buscar";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // lblVentasRegistradas
-            // 
-            this.lblVentasRegistradas.AutoSize = true;
-            this.lblVentasRegistradas.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVentasRegistradas.Location = new System.Drawing.Point(7, 10);
-            this.lblVentasRegistradas.Name = "lblVentasRegistradas";
-            this.lblVentasRegistradas.Size = new System.Drawing.Size(157, 21);
-            this.lblVentasRegistradas.TabIndex = 0;
-            this.lblVentasRegistradas.Text = "Ventas Registradas";
-            // 
-            // lblCantidadVendido
-            // 
-            this.lblCantidadVendido.AutoSize = true;
-            this.lblCantidadVendido.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadVendido.Location = new System.Drawing.Point(6, 61);
-            this.lblCantidadVendido.Name = "lblCantidadVendido";
-            this.lblCantidadVendido.Size = new System.Drawing.Size(147, 21);
-            this.lblCantidadVendido.TabIndex = 0;
-            this.lblCantidadVendido.Text = "Cantidad Vendido";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(11, 33);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(253, 25);
-            this.comboBox2.TabIndex = 1;
-            // 
-            // nudCantidad
-            // 
-            this.nudCantidad.Location = new System.Drawing.Point(48, 342);
-            this.nudCantidad.Name = "nudCantidad";
-            this.nudCantidad.Size = new System.Drawing.Size(91, 31);
-            this.nudCantidad.TabIndex = 3;
-            // 
-            // nudCantidadVendido
-            // 
-            this.nudCantidadVendido.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudCantidadVendido.Location = new System.Drawing.Point(11, 84);
-            this.nudCantidadVendido.Name = "nudCantidadVendido";
-            this.nudCantidadVendido.Size = new System.Drawing.Size(85, 25);
-            this.nudCantidadVendido.TabIndex = 2;
-            // 
-            // nudMayorA10
-            // 
-            this.nudMayorA10.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudMayorA10.Location = new System.Drawing.Point(10, 31);
-            this.nudMayorA10.Name = "nudMayorA10";
-            this.nudMayorA10.Size = new System.Drawing.Size(85, 25);
-            this.nudMayorA10.TabIndex = 0;
-            // 
             // frmCargaDeVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,18 +441,18 @@
             this.tbProductos.ResumeLayout(false);
             this.tbRegistroProductos.ResumeLayout(false);
             this.tbRegistroProductos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             this.tbConsultarProductos.ResumeLayout(false);
             this.tbConsultarProductos.PerformLayout();
             this.tbVendido2.ResumeLayout(false);
             this.tbMayorA10.ResumeLayout(false);
             this.tbMayorA10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMayorA10)).EndInit();
             this.tbVendido.ResumeLayout(false);
             this.tbVendido.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvProductosCargados)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadVendido)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudMayorA10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRefresh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvProductosCargados)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -472,8 +472,8 @@
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblCargarProductos;
         private System.Windows.Forms.TabPage tbConsultarProductos;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox picRefresh;
+        private System.Windows.Forms.Button cmdActualizar;
         private System.Windows.Forms.Button cmdVolver2;
         private System.Windows.Forms.Label lblProductosVendidos;
         private System.Windows.Forms.DataGridView dtgvProductosCargados;
@@ -484,11 +484,11 @@
         private System.Windows.Forms.TabControl tbVendido2;
         private System.Windows.Forms.TabPage tbMayorA10;
         private System.Windows.Forms.TabPage tbVendido;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button cmdBuscar;
+        private System.Windows.Forms.ComboBox lstProductosEnAlmacen;
         private System.Windows.Forms.Label lblProductoEnAlmacen;
         private System.Windows.Forms.Label lblIngresar;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox lstVentasRegistradas;
         private System.Windows.Forms.Label lblCantidadVendido;
         private System.Windows.Forms.Label lblVentasRegistradas;
         private System.Windows.Forms.NumericUpDown nudCantidad;
