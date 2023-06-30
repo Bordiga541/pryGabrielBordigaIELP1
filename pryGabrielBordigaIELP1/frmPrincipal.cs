@@ -12,9 +12,7 @@ namespace pryGabrielBordigaIELP1
 {
     public partial class frmPrincipal : Form
     {
-        public string[,] MatrizProductos = new string[30, 3];
-        int Indicefilas;
-        int Indicecolumnas;
+        
         public frmPrincipal()
         {
             InitializeComponent();
@@ -41,9 +39,9 @@ namespace pryGabrielBordigaIELP1
 
         private void cmdVerListado_Click(object sender, EventArgs e)
         {
-            frmListado frm = new frmListado("Productos", MatrizProductos, MatrizVentas);
-            frm.MatrizProductos = MatrizProductos;
-            frm.ShowDialog();
+            frmListados frm = new frmListados();
+            this.Hide();
+            frm.Show();
         }
     }
 }

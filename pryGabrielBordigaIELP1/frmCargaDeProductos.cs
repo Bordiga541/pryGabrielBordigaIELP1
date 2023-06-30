@@ -15,6 +15,7 @@ namespace pryGabrielBordigaIELP1
 {
     public partial class frmCargaDeProductos : Form
     {
+        string[,] MatrizListados;
         string[,] MatrizProductos = new string[30, 3];
         string[,] MatrizVentas = new string[30, 4];
         int f;
@@ -109,5 +110,7 @@ namespace pryGabrielBordigaIELP1
                 dtpFechaDeRegistro.Focus();
             }
         }
+
+        
     }
 }

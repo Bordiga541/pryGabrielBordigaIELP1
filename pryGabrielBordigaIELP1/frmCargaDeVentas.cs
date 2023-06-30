@@ -10,8 +10,10 @@ using System.Windows.Forms;
 
 namespace pryGabrielBordigaIELP1
 {
+    
     public partial class frmCargaDeVentas : Form
     {
+        string[,] MatrizListados;
         string[,] MatrizVentas = new string[30, 4];
         int f;
 
@@ -109,6 +111,11 @@ namespace pryGabrielBordigaIELP1
                 dtpFechaDeRegistro.Value = DateTime.Today;
                 dtpFechaDeRegistro.Focus();
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
         }
     }
 }
