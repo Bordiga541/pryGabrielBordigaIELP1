@@ -16,6 +16,7 @@ namespace pryGabrielBordigaIELP1
     public partial class frmCargaDeProductos : Form
     {
         string[,] MatrizProductos = new string[30, 3];
+        string[,] MatrizVentas = new string[30, 4];
         int f;
 
         public frmCargaDeProductos()
