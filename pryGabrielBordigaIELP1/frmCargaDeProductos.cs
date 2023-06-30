@@ -15,22 +15,20 @@ namespace pryGabrielBordigaIELP1
 {
     public partial class frmCargaDeProductos : Form
     {
-        string variableId;
-        string variableNombre;
-        string variableFecha;
-        string ProductoConcatenado;
-        string[,] matrizRegistarProductos = new string[30, 3];
-        int f, c;
+        string[,] MatrizProductos = new string[30, 3];
+        int f;
+
         public frmCargaDeProductos()
         {
             InitializeComponent();
         }
+
         void limpiar()
         {
             txtID.Text = "";
             txtNombre.Text = "";
-
         }
+
         private void cmdVolver_Click(object sender, EventArgs e)
         {
             frmPrincipal frm = new frmPrincipal();
@@ -47,33 +45,26 @@ namespace pryGabrielBordigaIELP1
 
         private void frmCargaDeProductos_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             f = 0;
-            while (f < matrizRegistarProductos.GetLength(0))
+            while (f < MatrizProductos.GetLength(0))
             {
-
-
-                dtgvProductosCargados.Rows.Add(matrizRegistarProductos[f, 0], matrizRegistarProductos[f, 1], matrizRegistarProductos[f, 2]);
-
-
-
+                dtgvProductosCargados.Rows.Add(MatrizProductos[f, 0], MatrizProductos[f, 1], MatrizProductos[f, 2]);
                 f++;
             }
         }
 
         private void txtID_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
 
-            
             if (txtID.Text.Length >= 5 && e.KeyChar != '\b')
             {
                 e.Handled = true;
@@ -82,23 +73,19 @@ namespace pryGabrielBordigaIELP1
 
         private void cmdCargar_Click(object sender, EventArgs e)
         {
-            variableId = txtID.Text;
-            variableNombre = txtNombre.Text;
-            variableFecha = dtpFechaDeRegistro.Value.ToString();
+            string variableId = txtID.Text;
+            string variableNombre = txtNombre.Text;
+            string variableFecha = dtpFechaDeRegistro.Value.ToString();
 
-            
             if (dtpFechaDeRegistro.Value >= DateTime.Today)
             {
-               
-                if (txtID.Text != "")
+                if (!string.IsNullOrEmpty(txtID.Text))
                 {
-                    if (txtNombre.Text != "")
+                    if (!string.IsNullOrEmpty(txtNombre.Text))
                     {
-                        
-                        matrizRegistarProductos[f, 0] = variableId;
-                        matrizRegistarProductos[f, 1] = variableNombre;
-                        matrizRegistarProductos[f, 2] = variableFecha;
-
+                        MatrizProductos[f, 0] = variableId;
+                        MatrizProductos[f, 1] = variableNombre;
+                        MatrizProductos[f, 2] = variableFecha;
                         f++;
                         limpiar();
                     }
@@ -107,22 +94,19 @@ namespace pryGabrielBordigaIELP1
                         MessageBox.Show("Falta Nombre del producto.", "Carga de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtNombre.Focus();
                     }
-
                 }
                 else
                 {
                     MessageBox.Show("Falta ID del producto", "Carga de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtID.Focus();
                 }
-
             }
             else
-            {                        
-                MessageBox.Show("Selecione una fecha actual o posterior", "Carga de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            {
+                MessageBox.Show("Seleccione una fecha actual o posterior", "Carga de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 dtpFechaDeRegistro.Value = DateTime.Today;
                 dtpFechaDeRegistro.Focus();
             }
-
         }
     }
 }

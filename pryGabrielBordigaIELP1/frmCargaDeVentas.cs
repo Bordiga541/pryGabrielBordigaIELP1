@@ -12,22 +12,18 @@ namespace pryGabrielBordigaIELP1
 {
     public partial class frmCargaDeVentas : Form
     {
-        string variableId;
-        string variableNombre;
-        string variableFecha;
-        string variableCantidad;
-        string ProductoConcatenado;
-        string[,] matrizRegistarProductos = new string[30, 4];
-        int f, c;
+        string[,] MatrizVentas = new string[30, 4];
+        int f;
+
         public frmCargaDeVentas()
         {
             InitializeComponent();
         }
+
         void limpiar()
         {
             txtID.Text = "";
             txtNombre.Text = "";
-
         }
 
         private void cmdVolver_Click(object sender, EventArgs e)
@@ -43,7 +39,6 @@ namespace pryGabrielBordigaIELP1
             {
                 e.Handled = true;
             }
-
 
             if (txtID.Text.Length >= 5 && e.KeyChar != '\b')
             {
@@ -61,41 +56,32 @@ namespace pryGabrielBordigaIELP1
         private void button1_Click(object sender, EventArgs e)
         {
             f = 0;
-            while (f < matrizRegistarProductos.GetLength(0))
+            while (f < MatrizVentas.GetLength(0))
             {
-
-
-                dtgvProductosCargados.Rows.Add(matrizRegistarProductos[f, 0], matrizRegistarProductos[f, 1], matrizRegistarProductos[f, 2], matrizRegistarProductos[f, 3]);
-
-
-
+                dtgvProductosCargados.Rows.Add(MatrizVentas[f, 0], MatrizVentas[f, 1], MatrizVentas[f, 2], MatrizVentas[f, 3]);
                 f++;
             }
         }
 
         private void cmdCargar_Click(object sender, EventArgs e)
         {
-            variableCantidad = nudCantidad.Text.ToString();
-            variableId = txtID.Text;
-            variableNombre = txtNombre.Text;
-            variableFecha = dtpFechaDeRegistro.Value.ToString();
-
+            string variableCantidad = nudCantidad.Text.ToString();
+            string variableId = txtID.Text;
+            string variableNombre = txtNombre.Text;
+            string variableFecha = dtpFechaDeRegistro.Value.ToString();
 
             if (dtpFechaDeRegistro.Value >= DateTime.Today)
             {
-
-                if (txtID.Text != "")
+                if (!string.IsNullOrEmpty(txtID.Text))
                 {
-                    if (nudCantidad.Text != "0")
+                    if (nudCantidad.Value != 0)
                     {
-                        if (txtNombre.Text != "")
+                        if (!string.IsNullOrEmpty(txtNombre.Text))
                         {
-
-                            matrizRegistarProductos[f, 0] = variableId;
-                            matrizRegistarProductos[f, 1] = variableNombre;
-                            matrizRegistarProductos[f, 2] = variableFecha;
-                            matrizRegistarProductos[f, 3] = variableCantidad;
-
+                            MatrizVentas[f, 0] = variableId;
+                            MatrizVentas[f, 1] = variableNombre;
+                            MatrizVentas[f, 2] = variableFecha;
+                            MatrizVentas[f, 3] = variableCantidad;
                             f++;
                             limpiar();
                         }
@@ -105,23 +91,21 @@ namespace pryGabrielBordigaIELP1
                             txtNombre.Focus();
                         }
                     }
-                    else 
+                    else
                     {
-                        MessageBox.Show("Falta indicar Cantidad", "Carga de Datos", MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                        
+                        MessageBox.Show("Falta indicar Cantidad", "Carga de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        nudCantidad.Focus();
                     }
-
                 }
                 else
                 {
                     MessageBox.Show("Falta ID del producto", "Carga de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtID.Focus();
                 }
-
             }
             else
             {
-                MessageBox.Show("Selecione una fecha actual o posterior", "Carga de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione una fecha actual o posterior", "Carga de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 dtpFechaDeRegistro.Value = DateTime.Today;
                 dtpFechaDeRegistro.Focus();
             }
